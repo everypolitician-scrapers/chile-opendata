@@ -4,7 +4,7 @@ require 'open-uri'
 require 'nokogiri'
 
 def noko_xml(url)
-  noko ||= Nokogiri::XML(open(url).read) 
+  noko = Nokogiri::XML(open(url).read) 
   noko.remove_namespaces!
 end
   
