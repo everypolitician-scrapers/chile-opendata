@@ -8,6 +8,8 @@ def noko_xml(url)
   noko.remove_namespaces!
 end
   
+# If we don't open the root first, opening the XML sometimes fails
+open('http://opendata.congreso.cl/')
 periods_xml = noko_xml('http://opendata.congreso.cl/wscamaradiputados.asmx/getPeriodosLegislativos')
 periods_xml.xpath('//PeriodoLegislativo/ID').map { |id| id.text }.sort.reverse.each do |period_id|
   puts "Fetching term #{period_id}"
